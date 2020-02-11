@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">//백그라운드는 공백이면 안된다
+    //로그인,로그아웃 기능
+    //이벤트 창 생성
+    <ImageView
+        android:layout_margin="25dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/android_logo"
+        android:background="@null"
+        android:layout_gravity="center"
+        android:layout_marginBottom="1dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:textStyle="bold"
+        android:textFontWeight="@android:integer/config_longAnimTime"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        />
+    <EditText
+        android:id="@+id/Input_email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="E-mail"
+        android:text=""
+        android:layout_marginBottom="16dp"
+        />
+    <EditText
+        android:id="@+id/Input_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Password"
+        android:text=""
+        android:layout_marginBottom="16dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+        <RelativeLayout
+            android:id="@+id/login_button"
+            android:background="@drawable/btn_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:clickable="true"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:src="@drawable/login_icon"
+                android:layout_gravity="right"
+                android:paddingLeft="10dp"
+                android:layout_weight="1"></ImageView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="LOGIN"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:layout_weight="2"
+
+                ></TextView>
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="or" />
+
+        <RelativeLayout
+            android:background="@drawable/btn_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:clickable="true"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingRight="30dp"
+                android:src="@drawable/naver_icon"></ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="LOGIN WITH NAVER"
+                android:textColor="#ffffff"
+
+                ></TextView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <TextView
+            android:id="@+id/find_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Find Password"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="5"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Sign Up"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="5"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20dp"
+        />
+        </LinearLayout>
+    <TextView
+        android:id="@+id/login_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        >
+    </TextView>
+</LinearLayout>

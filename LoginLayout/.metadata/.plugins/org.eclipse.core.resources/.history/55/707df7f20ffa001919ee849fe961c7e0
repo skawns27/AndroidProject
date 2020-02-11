@@ -1,0 +1,38 @@
+class Person {
+    String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+}
+
+class Student extends Person {
+    String dept;
+
+    public Student(String name) {
+        super(name);
+    }
+}
+
+public class CastingEX {
+	public static void main(String[] args) {
+		Person p;
+		Student s=new Student("≥≤¡ÿº∑");
+		
+		
+
+
+		
+
+	}
+
+}
+
+public class CastingEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
