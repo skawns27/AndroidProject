@@ -30,22 +30,27 @@
         android:gravity="center"
         android:layout_marginBottom="16dp"
         />
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/Input_email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="E-mail"
-        android:text=""
-        android:layout_marginBottom="16dp"
-        />
-    <EditText
-        android:id="@+id/Input_password"
+        android:layout_marginBottom="16dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Password"
-        android:text=""
-        android:layout_marginBottom="16dp"
-        />
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Input_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:layout_marginBottom="16dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,7 +93,7 @@
             android:text="or" />
 
         <RelativeLayout
-            android:background="@drawable/btn_blue"
+            android:background="@drawable/btn_green"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -136,6 +141,7 @@
             android:textSize="20dp"
             />
         <TextView
+            android:id="@+id/sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
