@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     String email1="skawns27";
     String password1="1234";
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         TextView_email = findViewById(R.id.Input_email);
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         login_log =findViewById(R.id.login_log);
         sign_up=findViewById(R.id.sign_up);
 
+
+        //이메일 옵저버
         TextView_email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-
-
+        //--------------------------------------
+        //비밀번호 옵저버
         TextView_password.addTextChangedListener(new TextWatcher() {//내부 클래스에서 작업
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -74,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+        //--------------------------------------------
+        //회원가입 회원
 
+        pass_login();
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        pass_login();
     }
     private void pass_login() {
         //입력값과 지정값이 같다면
