@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         //회원가입 회원
 
         pass_login();
+    }
+    private void pass_login() {
+        //입력값과 지정값이 같다면
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    private void pass_login() {
-        //입력값과 지정값이 같다면
         relativeLayout_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//클릭 이벤트 발생

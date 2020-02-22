@@ -1,5 +1,6 @@
 package com.example.loginlayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignUpActivity extends AppCompatActivity {
+    TextView sign_up;
     CheckBox male,female;
     TextView log;
     TextInputEditText TextView_email,TextView_password,TextView_password_check;
@@ -23,10 +25,10 @@ public class SignUpActivity extends AppCompatActivity {
     //2.중복 확인 후 메인화면으로 돌아오고 가입완료 이벤트 창 띄우기->DB정보 추가
     //3.
 
-    protected void onCreate(final Bundle savedInstanceState){
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up);
-
+        setContentView(R.layout.activity_main);
+        sign_up=findViewById(R.id.sign_up);
         TextView_email.findViewById(R.id.TextView_email);
         TextView_password.findViewById(R.id.TextView_password);
         TextView_password_check.findViewById(R.id.password_check);
@@ -38,7 +40,26 @@ public class SignUpActivity extends AppCompatActivity {
 
         send_in.setEnabled(false);
         confirm=false;
+
         //email 입력변화 확인
+
+    }
+
+
+    private void checkPassword(String input_password,String input_check){
+        if(input_password.equals(input_check)){
+            log.setText("비밀번호가 일치합니다.");
+        }
+        else if(input_check==null||input_password==null){
+            log.setText("비밀번호나 비밀번호 확인란을 입력해주세요");
+        }
+        else
+            log.setText("비밀번호가 일치하지 않습니다");
+
+    }
+    // private void checkEmail(String input_email)
+
+    private void obv(){
         TextView_email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -99,21 +120,5 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
-
-    private void checkPassword(String input_password,String input_check){
-        if(input_password.equals(input_check)){
-            log.setText("비밀번호가 일치합니다.");
-        }
-        else if(input_check==null||input_password==null){
-            log.setText("비밀번호나 비밀번호 확인란을 입력해주세요");
-        }
-        else
-            log.setText("비밀번호가 일치하지 않습니다");
-
-    }
-   // private void checkEmail(String input_email)
-
 }
