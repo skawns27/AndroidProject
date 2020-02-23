@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int REQUEST_LOGIN=100;
     String input_email="";
     String input_password="";
     TextView login_log;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, LoginResult.class);//배송위치
                     intent.putExtra("email", input_email);//인텐트 엑스트라에 입력
                     intent.putExtra("password", input_password);
-                    startActivity(intent);//인텐트 전달
+                    startActivityForResult(intent,REQUEST_LOGIN);//인텐트 전달
                 }//입력정보 분기점
                 else {
                     if (TextView_email.getText().toString().equals("")||TextView_password.getText().toString().equals("")) {

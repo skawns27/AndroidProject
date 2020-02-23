@@ -12,25 +12,56 @@
         android:layout_height="wrap_content"
         android:src="@drawable/lock"
         android:padding="18dp"/>
-    <TextView
-        android:text="로그인 성공"
-        android:textSize="40dp"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:text="환영합니다"
-        android:textSize="20dp"
-        >
-    </TextView>
+        android:orientation="horizontal">
+        <TextView
+            android:text="개인매뉴"
+            android:textSize="40dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_marginLeft="320dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:textColor="#ffffff"
+            android:text="Logout"
+            android:textStyle="italic"
+            android:textSize="17sp"
+            android:background="@drawable/btn_red"></Button>
+    </RelativeLayout>
     <TextView
         android:id="@+id/result_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-></TextView>
+        android:layout_weight="0.5"
+        android:textSize="20dp"
+        >
+    </TextView>
+    <Button
+        android:id="@+id/study_btn"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:textColor="#ffffff"
+        android:text="학습시작"
+        android:textSize="30sp"
+        android:background="@drawable/btn_blue"></Button>
+    <Button
+        android:id="@+id/look_btn"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:textColor="#ffffff"
+        android:text="조회"
+        android:textSize="30sp"
+        android:background="@drawable/btn_blue"></Button>
+
+
 </LinearLayout>

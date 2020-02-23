@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignUpActivity extends AppCompatActivity {
-    TextView sign_up;
     CheckBox male,female;
     TextView log;
     TextInputEditText TextView_email,TextView_password,TextView_password_check;
@@ -27,20 +26,20 @@ public class SignUpActivity extends AppCompatActivity {
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        sign_up=findViewById(R.id.sign_up);
-        TextView_email.findViewById(R.id.TextView_email);
-        TextView_password.findViewById(R.id.TextView_password);
-        TextView_password_check.findViewById(R.id.password_check);
-        email_confirm.findViewById(R.id.check_email);
-        male.findViewById(R.id.man);
-        female.findViewById(R.id.woman);
-        log.findViewById(R.id.sign_up_log);
-        send_in.findViewById(R.id.send_in);
+        setContentView(R.layout.sign_up);
+
+        TextView_email=findViewById(R.id.TextView_email);
+        TextView_password=findViewById(R.id.TextView_password);
+        TextView_password_check=findViewById(R.id.password_check);
+        email_confirm=findViewById(R.id.check_email);
+        male=findViewById(R.id.man);
+        female=findViewById(R.id.woman);
+        log=findViewById(R.id.sign_up_log);
+        send_in=findViewById(R.id.send_in);
 
         send_in.setEnabled(false);
         confirm=false;
-
+        observer();
         //email 입력변화 확인
 
     }
@@ -59,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     // private void checkEmail(String input_email)
 
-    private void obv(){
+    private void observer(){
         TextView_email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
