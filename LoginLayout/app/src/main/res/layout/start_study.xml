@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="금월 최고학습량"
+        android:textSize="35sp"></TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="최고기록 날짜"
+        android:textSize="30sp">
+    </TextView>
+    <TextView
+        android:id="@+id/date"
+        android:layout_marginTop="60dp"
+        android:paddingLeft="15dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="금일날짜 학습시간"
+        android:textStyle="bold"
+        android:textSize="45sp"
+        ></TextView>
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="금일공부시간"
+        android:textStyle="italic"
+        android:textSize="45sp"
+        >
+
+    </TextView>
+    <Button
+        android:id="@+id/sound_control"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="집중력 음량설정"
+        android:textSize="20dp"
+
+        ></Button>
+</LinearLayout>

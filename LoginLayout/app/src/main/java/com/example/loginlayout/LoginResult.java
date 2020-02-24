@@ -12,6 +12,8 @@ public class LoginResult extends AppCompatActivity {
     TextView login_result;
     Button logout_btn,study_btn,look_btn;
     final int REQUEST_LOGOUT=200;
+    final int REQUEST_STUDY=101;
+    final int REQUEST_SEARCH=102;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +32,25 @@ public class LoginResult extends AppCompatActivity {
                 Logout();
             }
         });
+        study_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start_study();
+            }
+        });
+
         String email=bundle.getString("email");
         login_result.setText(email+"님 환영합니다.");
 
 
     }
     private void Logout(){
-        setResult(200);
+        setResult(REQUEST_LOGOUT);
         finish();
+    }
+    private void start_study(){
+        Intent intent=new Intent(LoginResult.this,study_activity.class);
+        startActivityForResult(intent,REQUEST_STUDY);
     }
 }
 
