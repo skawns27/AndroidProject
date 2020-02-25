@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -111,6 +115,32 @@ public class MainActivity extends AppCompatActivity {
                 //로그인 불가 이벤트 추가할 것
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int curId=item.getItemId();
+        switch(curId){
+            case R.id.menu_refresh:{
+                Toast.makeText(this,"새로고침 되었습니다",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.menu_search:{
+                Toast.makeText(this,"검색 메뉴 선택",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.menu_setting:{
+                Toast.makeText(this,"설정 중",Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 
