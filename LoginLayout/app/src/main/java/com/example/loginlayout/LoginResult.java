@@ -2,10 +2,14 @@ package com.example.loginlayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginResult extends AppCompatActivity {
@@ -45,12 +49,39 @@ public class LoginResult extends AppCompatActivity {
 
     }
     private void Logout(){
+        Toast.makeText(this,"로그아웃",Toast.LENGTH_SHORT).show();
         setResult(REQUEST_LOGOUT);
         finish();
     }
     private void start_study(){
         Intent intent=new Intent(LoginResult.this,study_activity.class);
         startActivityForResult(intent,REQUEST_STUDY);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);//메뉴추가
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int curId=item.getItemId();
+        switch(curId){
+            case R.id.menu_refresh:{
+                Toast.makeText(this,"새로고침 되었습니다",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.menu_search:{
+                Toast.makeText(this,"검색 메뉴 선택",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.menu_setting:{
+                Toast.makeText(this,"설정 중",Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

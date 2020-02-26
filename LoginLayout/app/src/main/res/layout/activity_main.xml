@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     android:weightSum="20"
     tools:context=".LoginResult">
+    <androidx.fragment.app.FragmentTabHost
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.fragment.app.FragmentTabHost>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
