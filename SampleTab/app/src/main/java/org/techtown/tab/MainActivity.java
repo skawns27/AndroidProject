@@ -2,6 +2,7 @@ package org.techtown.tab;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -29,8 +30,17 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        DrawerLayout drawer=findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle
+                (this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
+        NavigationView navigation=findViewById(R.id.nav_view);
+        navigation.setNavigationItemSelectedListener(this);
         fragment1=new Fragment1();
         fragment2=new Fragment2();
         fragment3=new Fragment3();
