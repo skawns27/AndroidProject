@@ -24,16 +24,13 @@ public class study_activity extends AppCompatActivity {
         date.setText(now.toString());
         logout=findViewById(R.id.logout_button);
         sound_control=findViewById(R.id.sound_control);
-        logout();
-
-    }
-    private void logout(){
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setResult(REQUEST_STOP);
                 finish();
-            }
-        });
+                }
+            });
+        }
     }
-}
+

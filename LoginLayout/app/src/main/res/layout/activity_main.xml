@@ -7,72 +7,41 @@
     android:layout_height="match_parent"
     android:weightSum="20"
     tools:context=".LoginResult">
-    <androidx.fragment.app.FragmentTabHost
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </androidx.fragment.app.FragmentTabHost>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/lock"
-        android:padding="18dp"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:text="개인매뉴"
-            android:textSize="40dp"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            />
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_marginLeft="320dp"
-            android:gravity="bottom"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="Logout"
-            android:textSize="17sp"></Button>
-    </RelativeLayout>
-    <TextView
-        android:id="@+id/result_login"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </FrameLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:textSize="20dp"
-        >
-    </TextView>
-    <Button
-        android:id="@+id/study_btn"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:textColor="#ffffff"
-        android:text="학습시작"
-        android:textSize="30sp"
-        android:background="@drawable/btn_blue"></Button>
-    <Button
-        android:id="@+id/look_btn"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:textColor="#ffffff"
-        android:text="학습량 조회"
-        android:textSize="30sp"
-        android:background="@drawable/btn_blue"></Button>
-    <Button
-        android:id="@+id/opt"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:textColor="#ffffff"
-        android:text="옵션"
-        android:textSize="30sp"
-        android:background="@drawable/btn_blue"></Button>
+        android:layout_height="match_parent"
+        app:itemBackground="@color/design_default_color_primary"
+        app:itemIconTint="@color/colorBlack"
+        app:menu="@menu/menu_bar"
+        app:itemTextColor="@color/colorNavy">
+
+    </com.google.android.material.navigation.NavigationView>
+
+
 
 </LinearLayout>
