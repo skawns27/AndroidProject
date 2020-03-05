@@ -23,28 +23,34 @@ public class MainActivity extends AppCompatActivity {
     EditText inputData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         start_server=findViewById(R.id.star_server);
         send_btn=findViewById(R.id.send_btn);
         send_result=findViewById(R.id.send_result);
         server_result=findViewById(R.id.server_result);
         inputData=findViewById(R.id.input_data);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String data =inputData.getText().toString();
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        send(data);
-                    }
-                }).start();
+                try {
+                    final String data = inputData.getText().toString();
+                    Log.d("data",data);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            send(data);
+                        }
+                    }).start();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
             }
         });
+
         start_server.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
             outStream.writeObject(data);
             outStream.flush();
             printClientLog("데이터 전송함");
+
+            ObjectInputStream objectINputStream=new ObjectInputStream(socket.getInputStream());
+            printClientLog("서버로부터 받아옴:"+objectINputStream.readObject());
             socket.close();
         } catch (Exception e) {
             e.printStackTrace();
