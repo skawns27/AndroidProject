@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
             ServerSocket server=new ServerSocket(portNumber);
             printServerLog("서버시작"+portNumber);
 
-            while(true){
+            while(true){//서버를 열고 계속 송수신
                 Socket sock=server.accept();
                 InetAddress clientHost=sock.getLocalAddress();
-                int clientPort=sock.getPort();
-                printServerLog("클라이언트 연결 됨"+clientHost+clientPort);
+                int clientPort=sock.getPort();//사용자 포트
+                printServerLog("클라이언트 연결 됨"+clientHost+clientPort);//클라이언트+호스트 소켓 출력
 
                 ObjectInputStream inputStream=new ObjectInputStream(sock.getInputStream());
                 Object obj=inputStream.readObject();
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                server_result.append(data+"\n");
+                send_result.append(data+"\n");
             }
         });
     }
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                send_result.append(data+"\n");
+                server_result.append(data+"\n");
             }
         });
     }
