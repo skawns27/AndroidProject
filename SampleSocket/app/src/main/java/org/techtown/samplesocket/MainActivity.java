@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 printServerLog("데이터 수신:"+obj);
 
                 ObjectOutputStream outputStream=new ObjectOutputStream(sock.getOutputStream());
-                outputStream.writeObject(obj+"from server");
+                outputStream.writeObject(obj+"from server");//메시지 로그 위치 변경
                 outputStream.flush();
                 printServerLog("데이터 보냄");
 
