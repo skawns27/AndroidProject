@@ -1,5 +1,6 @@
 package com.skawns27.newsapp;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,7 +14,7 @@ public class bodyActivity extends AppCompatActivity {
     TextView content;
     ImageView imageContent;
     NewData newData;
-    String imageUrl;
+    Uri imageUrl;
 
    protected void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
@@ -27,8 +28,9 @@ public class bodyActivity extends AppCompatActivity {
        newData=(NewData)bundle.getSerializable("article");
 
        title.setText(newData.getTitle());
-       content.setText(newData.getDescription());
-       imageUrl=newData.getUrlToImage();
+       content.setText(newData.getContent());
+       imageUrl= Uri.parse(newData.getUrlToImage());
+       imageContent.setImageURI(imageUrl);
 
    }
 }

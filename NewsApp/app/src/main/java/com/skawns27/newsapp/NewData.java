@@ -5,7 +5,7 @@ public class NewData implements Serializable {//데이터 직렬화->데이터�
     private String title;
     private String urlToImage;
     private String description;
-
+    private String content;
     public void setTitle(String title) {
         this.title = title;
     }
@@ -19,6 +19,8 @@ public class NewData implements Serializable {//데이터 직렬화->데이터�
         this.description = description;
     }
 
+    public void setContent(String content){ this.content=content;}
+
     public String getTitle() {
         return title;
     }
@@ -31,4 +33,6 @@ public class NewData implements Serializable {//데이터 직렬화->데이터�
     public String getDescription() {
         return description;
     }
+
+    public String getContent() { return content; }
 }

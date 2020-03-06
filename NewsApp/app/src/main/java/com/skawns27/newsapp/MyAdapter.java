@@ -16,7 +16,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private List<NewData> mDataset;
+    private List<NewData> mDataset;//news 데이터 배열
     private static View.OnClickListener onClickListener;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -35,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             rootView=v;
             v.setEnabled(true);
             v.setClickable(true);//list 활성화
-            v.setOnClickListener(onClickListener);//??
+            v.setOnClickListener(onClickListener);//아이템 클릭 활성화
 
         }
     }
@@ -63,6 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {//데이터의 배치 설정 함수
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+        // - 실질적 데이터 입력 구간
         NewData newData=mDataset.get(position);
         Uri uri = Uri.parse(newData.getUrlToImage());
         holder.TextViewTitle.setText(newData.getTitle());
@@ -81,5 +82,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public int getItemCount() {
         return mDataset==null?0:mDataset.size();
-    }
+    }//리사이클 뷰의 아이템 카운터|mDataset이 없으면 0,있으면 그 크기만큼
 }
