@@ -21,9 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class LoginResult extends AppCompatActivity implements Logout{
     TextView login_result;
-    Button logout_btn,study_btn,look_btn;
-    Toolbar toolbar;
-    DrawerLayout drawer;
+    Button logout_btn,start_btn,search_btn;
     final int REQUEST_LOGOUT=200;
     final int REQUEST_STUDY=101;
     final int REQUEST_SEARCH=102;
@@ -33,17 +31,12 @@ public class LoginResult extends AppCompatActivity implements Logout{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        login_result=findViewById(R.id.result_login);
-        logout_btn=findViewById(R.id.logout_button);
-        study_btn=findViewById(R.id.study_btn);
-        look_btn=findViewById(R.id.look_btn);
-        toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        NavigationView navigationView=findViewById(R.id.nav_view);
 
-        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
-        toggle.syncState();
+        login_result=findViewById(R.id.login_result);
+        logout_btn=findViewById(R.id.logout_btn);
+        start_btn=findViewById(R.id.start_btn);
+        search_btn=findViewById(R.id.search_btn);
+
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
 
@@ -54,7 +47,7 @@ public class LoginResult extends AppCompatActivity implements Logout{
             }
         });
 
-        study_btn.setOnClickListener(new View.OnClickListener() {
+        start_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 start_study();
@@ -67,17 +60,6 @@ public class LoginResult extends AppCompatActivity implements Logout{
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer=findViewById(R.id.drawer);
-        if(drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.isDrawerOpen(GravityCompat.START);
-        }
-        else{
-            super.onBackPressed();
-        }
-
-    }
 
     @Override
     public void logout() {
@@ -87,11 +69,11 @@ public class LoginResult extends AppCompatActivity implements Logout{
     }
     protected void start_study(){
         Toast.makeText(this,"학습시작",Toast.LENGTH_LONG).show();
-        Intent intent=new Intent(getApplicationContext(),study_activity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|
+        Intent mIntent=new Intent(getApplicationContext(),study_activity.class);
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|
                         Intent.FLAG_ACTIVITY_SINGLE_TOP|
                         Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivityForResult(intent,REQUEST_STUDY);
+        startActivityForResult(mIntent,REQUEST_STUDY);
     }
 
     @Override

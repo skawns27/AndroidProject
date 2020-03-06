@@ -7,41 +7,64 @@
     android:layout_height="match_parent"
     android:weightSum="20"
     tools:context=".LoginResult">
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_height="wrap_content"
+        android:text="환영합니다!"
+        android:textSize="50sp"
+        android:layout_marginTop="30dp">
+    </TextView>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <TextView
+            android:id="@+id/login_result"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:text="user"
+            android:textSize="20sp"
+            android:layout_weight="7.5"
+            android:layout_marginTop="30dp">
+        </TextView>
+        <Button
+            android:id="@+id/logout_btn"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="2.5"
+            android:layout_marginTop="23dp"
+            android:layout_marginRight="10dp"
+            android:text="로그아웃"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_logout"></Button>
+    </LinearLayout>
 
-        </com.google.android.material.appbar.AppBarLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        <FrameLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </FrameLayout>
-    </androidx.drawerlayout.widget.DrawerLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:itemBackground="@color/design_default_color_primary"
-        app:itemIconTint="@color/colorBlack"
-        app:menu="@menu/menu_bar"
-        app:itemTextColor="@color/colorNavy">
-
-    </com.google.android.material.navigation.NavigationView>
-
-
-
+    <Button
+        android:id="@+id/start_btn"
+        android:layout_marginTop="40dp"
+        android:layout_width="370dp"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:layout_height="60dp"
+        android:background="@drawable/content_btn"
+        android:text="학습시작"></Button>
+    <Button
+        android:id="@+id/option_btn"
+        android:layout_marginTop="20dp"
+        android:layout_width="370dp"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:layout_height="60dp"
+        android:background="@drawable/content_btn"
+        android:text="옵션"></Button>
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_marginTop="20dp"
+        android:layout_width="370dp"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:layout_height="60dp"
+        android:background="@drawable/content_btn"
+        android:text="학습시작"></Button>
 </LinearLayout>

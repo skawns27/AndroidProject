@@ -5,20 +5,18 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_LOGIN=100;
+    public static final int REQUEST_SIGNUP=101;
+    public static final int REQUEST_FOUNDPW=102;
     String input_email="";
     String input_password="";
     TextView login_log;
