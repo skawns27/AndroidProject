@@ -9,11 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
-public class study_activity extends AppCompatActivity {
+public class study_activity extends AppCompatActivity implements activityCollection{
     TextView date,time,record;
     Button sound_control,logout;
     Calendar now=Calendar.getInstance();
-    final int REQUEST_STOP=201;
     int month,day;//오늘날짜
     int today;//금일기록
 
@@ -32,5 +31,11 @@ public class study_activity extends AppCompatActivity {
                 }
             });
         }
+
+    @Override
+    public void logout() {
+        setResult(REQUEST_FIRST);
+        finish();
     }
+}
 

@@ -2,7 +2,6 @@ package com.example.loginlayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,20 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.material.navigation.NavigationView;
-
-public class LoginResult extends AppCompatActivity implements Logout{
+public class LoginResult extends AppCompatActivity implements activityCollection {
     TextView login_result;
     Button logout_btn,start_btn,search_btn;
-    final int REQUEST_LOGOUT=200;
-    final int REQUEST_STUDY=101;
-    final int REQUEST_SEARCH=102;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +91,23 @@ public class LoginResult extends AppCompatActivity implements Logout{
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode==REQUEST_STOP){
+            Toast.makeText(this,"사용종료",Toast.LENGTH_LONG).show();
+        }
+        else if(resultCode==REQUEST_LOGOUT){
+            Toast.makeText(this,"로그아웃",Toast.LENGTH_LONG).show();
+            finish();
+        }
+        else if(resultCode==REQUEST_FIRST){
+            Toast.makeText(this,"로그아웃",Toast.LENGTH_LONG).show();
+            finish();
+        }
+        else
+            super.onActivityResult(requestCode, resultCode, data);
     }
 }
 
