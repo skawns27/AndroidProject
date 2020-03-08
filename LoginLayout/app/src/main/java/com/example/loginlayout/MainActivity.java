@@ -99,10 +99,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {//클릭 이벤트 발생
                 if (input_email.equals(email1) && input_password.equals(password1)) {
-                    Intent intent = new Intent(MainActivity.this, LoginResult.class);//배송위치
+                    Intent intent = new Intent(getApplicationContext(), LoginResult.class);//배송위치
+                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK|
+                                    intent.FLAG_ACTIVITY_SINGLE_TOP|
+                                    intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("email", input_email);//인텐트 엑스트라에 입력
                     intent.putExtra("password", input_password);
-                    startActivityForResult(intent,REQUEST_LOGIN);//인텐트 전달
+                    startActivity(intent);//인텐트 전달
                 }//입력정보 분기점
                 else {
                     if (TextView_email.getText().toString().equals("")||TextView_password.getText().toString().equals("")) {
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                //로그인 불가 이벤트 추가할 것
+                //로그인 불가 이벤트 추가 완료
             }
         });
     }
