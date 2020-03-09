@@ -2,6 +2,7 @@ package com.example.loginlayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,6 +96,8 @@ public class LoginResult extends AppCompatActivity implements activityCollection
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        Log.d("결과코드",Integer.toString(resultCode));
         if(resultCode==REQUEST_STOP){
             Toast.makeText(this,"사용종료",Toast.LENGTH_LONG).show();
         }
@@ -102,11 +105,10 @@ public class LoginResult extends AppCompatActivity implements activityCollection
             Toast.makeText(this,"로그아웃",Toast.LENGTH_LONG).show();
             finish();
         }
-        else if(resultCode==REQUEST_FIRST){
-            Toast.makeText(this,"로그아웃",Toast.LENGTH_LONG).show();
+        else if(resultCode==REQUEST_LOCK){
+            Toast.makeText(this,"로그인 화면으로 전환합니다",Toast.LENGTH_LONG).show();
             finish();
         }
-        else
             super.onActivityResult(requestCode, resultCode, data);
     }
 }

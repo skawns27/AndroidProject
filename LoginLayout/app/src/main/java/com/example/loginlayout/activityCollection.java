@@ -6,5 +6,5 @@ public interface activityCollection {
    public final int REQUEST_STUDY=101;
    public final int REQUEST_SEARCH=102;
    public final int REQUEST_STOP=201;
-   public final int REQUEST_FIRST=202;
+   public final int REQUEST_LOCK=202;
 }
