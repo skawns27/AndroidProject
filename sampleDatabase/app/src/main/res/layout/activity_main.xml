@@ -17,6 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="6.5"
+            android:text="employee"
             android:hint="데이터베이스 이름"></EditText>
         <Button
             android:id="@+id/createDB_btn"
@@ -38,6 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="6.5"
+            android:text="emp"
             android:hint="테이블 이름"></EditText>
         <Button
             android:id="@+id/createTable_btn"
@@ -46,7 +48,11 @@
             android:layout_weight="3.5"
             android:text="테이블 생성"></Button>
     </LinearLayout>
-
+<Button
+    android:id="@+id/query_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="정보조회"></Button>
     <ScrollView
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
