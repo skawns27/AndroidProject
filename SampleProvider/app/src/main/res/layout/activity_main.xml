@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_marginLeft="15dp"
+            android:id="@+id/recent_btn"
+            android:layout_width="95dp"
+            android:layout_height="70dp"
+            android:text="recent"></Button>
+        <Button
+            android:id="@+id/query_btn"
+            android:layout_width="95dp"
+            android:layout_height="70dp"
+            android:text="query"></Button>
+        <Button
+            android:id="@+id/update_btn"
+            android:layout_width="95dp"
+            android:layout_height="70dp"
+            android:text="update"></Button>
+        <Button
+            android:id="@+id/delete_btn"
+            android:layout_width="95dp"
+            android:layout_height="70dp"
+            android:text="delete"></Button>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></TextView>
+    </ScrollView>
+
+</LinearLayout>
+
