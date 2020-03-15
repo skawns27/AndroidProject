@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PERSON_NAME="name";
     public static final String PERSON_AGE="age";
     public static final String PERSON_MOBILE="mobile";
-
+    public static final String[] ALL_COLUMNS={PERSON_ID, PERSON_NAME, PERSON_AGE, PERSON_MOBILE};
     private String CRREATE_TABLE=
             "CREATE TABLE "+TABLE_NAME+" ("+
                     PERSON_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
