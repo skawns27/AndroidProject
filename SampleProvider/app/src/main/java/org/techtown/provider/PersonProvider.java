@@ -71,7 +71,7 @@ public class PersonProvider extends ContentProvider {
         }
         throw new SQLException("추가 실패->URL:"+uri);
     }
-
+//커밋 적용 안되서 다시 올림
     public int delete(Uri uri, String s, String[] strings){
         int cnt=0;
         switch (uriMather.match(uri)){
