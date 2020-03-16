@@ -1,4 +1,4 @@
-package org.techtown.sampleprovider;
+package org.techtown.provider;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("org.techtown.sampleprovider", appContext.getPackageName());
+        assertEquals("org.techtown.provider", appContext.getPackageName());
     }
 }

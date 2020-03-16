@@ -1,4 +1,4 @@
-package org.techtown.sampleprovider;
+package org.techtown.provider;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -1,4 +1,4 @@
-package org.techtown.sampleprovider;
+package org.techtown.provider;
 
 import org.junit.Test;
 

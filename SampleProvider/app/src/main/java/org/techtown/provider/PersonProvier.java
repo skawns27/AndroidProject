@@ -1,4 +1,4 @@
-package org.techtown.sampleprovider;
+package org.techtown.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 public class PersonProvier extends ContentProvider {
-    public static final String AUTHORITY="org.techdown.provider";
+    public static final String AUTHORITY="org.techtown.provider";
     public static final String BASE_PATH="person";
     public static final Uri CONTENT_URI=Uri.parse("content://"+AUTHORITY+"/"+BASE_PATH);
 
@@ -35,13 +35,12 @@ public class PersonProvier extends ContentProvider {
         return true;
     }
 
-    public Cursor qeury(Uri uri, String[] strings, String s, String[] strings1, String s1){
+    public Cursor query(Uri uri, String[] strings, String s, String[] strings1, String s1){
         Cursor cursor;
         switch(uriMather.match(uri)){
             case PERSONS:
-                cursor=database.query(DatabaseHelper.TABLE_NAME,
-                                        DatabaseHelper.ALL_COLUMNS,
-                                        s,null,null, null,DatabaseHelper.PERSON_NAME+"ASC");
+                cursor=database.query(DatabaseHelper.TABLE_NAME,DatabaseHelper.ALL_COLUMNS,
+                                        s,null,null,null,DatabaseHelper.PERSON_NAME+"ASC");
 
                 break;
                 default:
