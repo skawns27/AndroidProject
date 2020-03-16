@@ -9,7 +9,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-public class PersonProvier extends ContentProvider {
+public class PersonProvider extends ContentProvider {
     public static final String AUTHORITY="org.techtown.provider";
     public static final String BASE_PATH="person";
     public static final Uri CONTENT_URI=Uri.parse("content://"+AUTHORITY+"/"+BASE_PATH);
