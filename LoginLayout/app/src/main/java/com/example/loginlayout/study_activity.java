@@ -7,16 +7,19 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class study_activity extends AppCompatActivity implements activityCollection{
-    TextView date,sec_tv,min_tv,hour_tv,record;
+    TextView date,sec_tv,min_tv,hour_tv,today_record;
     Button sound_control,logout;
     long study_sec=0;
     long study_min=0;
     long study_hour=0;
+    String today;
 
 
     TimerTask timerTask= new TimerTask() {
@@ -49,7 +52,10 @@ public class study_activity extends AppCompatActivity implements activityCollect
         hour_tv=findViewById(R.id.st_hour);
         min_tv=findViewById(R.id.st_min);
         sec_tv=findViewById(R.id.st_sec);
+        date=findViewById(R.id.date);
 
+        today=DateFormat.getInstance().format(myData);
+        date.setText(df);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

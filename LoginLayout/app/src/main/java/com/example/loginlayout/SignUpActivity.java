@@ -38,6 +38,18 @@ public class SignUpActivity extends AppCompatActivity {
         log=findViewById(R.id.sign_up_log);
         send_in=findViewById(R.id.send_in);
 
+        male.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                female.setChecked(false);
+            }
+        });
+        female.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                male.setChecked(false);
+            }
+        });
         send_in.setEnabled(false);
         confirm=false;
         observer();

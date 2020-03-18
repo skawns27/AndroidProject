@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="최고기록 날짜"
+        android:text="최고기록"
         android:textSize="30sp">
     </TextView>
     <TextView
@@ -71,6 +71,7 @@
             ></TextView>
         <TextView
             android:id="@+id/st_sec"
+            android:inputType="datetime"
             android:layout_width="0dp"
             android:layout_weight="1.5"
             android:layout_height="wrap_content"
@@ -88,6 +89,11 @@
             android:textSize="30sp"
             ></TextView>
     </LinearLayout>
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp">
+    </androidx.core.widget.ContentLoadingProgressBar>
     <Button
         android:id="@+id/sound_control"
         android:layout_width="360dp"
@@ -98,6 +104,7 @@
         android:textSize="20dp"
 
         ></Button>
+
     <Button
         android:id="@+id/logout_button"
         android:layout_width="360dp"
