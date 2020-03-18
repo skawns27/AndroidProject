@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.TimerTask;
+
 public class LoginResult extends AppCompatActivity implements activityCollection {
     TextView login_result;
     Button logout_btn,start_btn,search_btn;
@@ -21,7 +23,6 @@ public class LoginResult extends AppCompatActivity implements activityCollection
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         login_result=findViewById(R.id.login_result);
@@ -97,7 +98,7 @@ public class LoginResult extends AppCompatActivity implements activityCollection
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        Log.d("결과코드",Integer.toString(resultCode));
+        Log.d("결과코드",Integer.toString(requestCode));
         if(resultCode==REQUEST_STOP){
             Toast.makeText(this,"사용종료",Toast.LENGTH_LONG).show();
         }

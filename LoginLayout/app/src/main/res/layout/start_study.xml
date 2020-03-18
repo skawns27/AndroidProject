@@ -26,18 +26,68 @@
         android:textStyle="bold"
         android:textSize="45sp"
         ></TextView>
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="match_parent"
+    <LinearLayout
         android:layout_marginTop="20dp"
-        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="금일공부시간"
-        android:textStyle="italic"
-        android:textSize="45sp"
+        android:weightSum="10"
+        android:orientation="horizontal">
+        <TextView
+        android:id="@+id/st_hour"
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:gravity="right"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
         >
-
     </TextView>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.7"
+            android:gravity="center"
+            android:text="시간"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/st_min"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            ></TextView>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="분"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textSize="30sp"
+            ></TextView>
+        <TextView
+            android:id="@+id/st_sec"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            ></TextView>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.3"
+            android:gravity="center"
+            android:text="초"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textSize="30sp"
+            ></TextView>
+    </LinearLayout>
     <Button
         android:id="@+id/sound_control"
         android:layout_width="360dp"
@@ -53,7 +103,7 @@
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="로그아웃"
         android:textSize="20dp"
 
