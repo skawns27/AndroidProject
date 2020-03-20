@@ -3,9 +3,9 @@
 
 
     <item android:state_pressed="true">
-        <shape android:shape="rectangle">
+        <shape android:shape="ring">
             <solid android:color="@color/colorBrightYellow"></solid>
-            <corners android:radius="10dp">
+            <corners android:radius="1000dp">
             </corners>
         </shape>
     </item>
@@ -13,13 +13,13 @@
         <shape android:shape="rectangle">
             <corners android:radius="20dp">
             </corners>
-            <solid android:color="@color/colorBlue"></solid>
+            <solid android:color="#00498c"></solid>
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="10dp">
             </corners>
-            <solid android:color="@color/colorBlue"></solid></shape>
+            <solid android:color="#00498c"></solid></shape>
     </item>
 </selector>

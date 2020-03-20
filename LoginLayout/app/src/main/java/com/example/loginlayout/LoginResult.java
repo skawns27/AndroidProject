@@ -9,36 +9,43 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.TimerTask;
 
-public class LoginResult extends AppCompatActivity implements activityCollection {
+public class LoginResult extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener,activityCollection, FragmentManager {
+
     TextView login_result;
-    Button logout_btn,start_btn,search_btn;
+    Button start_btn;
+
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        DrawerLayout drawer=findViewById(R.id.drawer);
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
         login_result=findViewById(R.id.login_result);
-        logout_btn=findViewById(R.id.logout_btn);
         start_btn=findViewById(R.id.start_btn);
-        search_btn=findViewById(R.id.search_btn);
 
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
 
-        logout_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
 
         start_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +59,6 @@ public class LoginResult extends AppCompatActivity implements activityCollection
 
 
     }
-
 
     @Override
     public void logout() {
@@ -73,6 +79,11 @@ public class LoginResult extends AppCompatActivity implements activityCollection
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);//메뉴추가
         return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
     }
 
     @Override

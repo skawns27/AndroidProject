@@ -11,6 +11,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.zip.DataFormatException;
 
 
 public class study_activity extends AppCompatActivity implements activityCollection{
@@ -54,8 +55,9 @@ public class study_activity extends AppCompatActivity implements activityCollect
         sec_tv=findViewById(R.id.st_sec);
         date=findViewById(R.id.date);
 
-        today=DateFormat.getInstance().format(myData);
-        date.setText(df);
+        DateFormat myData= DateFormat.getDateInstance();
+        today=myData.toString();
+        date.setText(today);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
