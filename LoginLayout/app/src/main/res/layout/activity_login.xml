@@ -60,7 +60,7 @@
         >
         <RelativeLayout
             android:id="@+id/login_button"
-            android:background="@drawable/btn_red"
+            android:background="@drawable/btn_blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -86,6 +86,7 @@
 
         </RelativeLayout>
         <TextView
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -101,23 +102,6 @@
             android:clickable="true"
             >
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="45dp"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:paddingRight="30dp"
-                android:src="@drawable/naver_icon"></ImageView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="LOGIN WITH NAVER"
-                android:textColor="#ffffff"
-
-                ></TextView>
 
         </RelativeLayout>
 
@@ -125,6 +109,7 @@
 
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
