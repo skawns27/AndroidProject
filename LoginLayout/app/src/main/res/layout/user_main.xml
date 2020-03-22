@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="110dp"
         android:layout_width="match_parent"
         android:gravity="center"
         android:text="You now just"
@@ -15,8 +15,8 @@
         android:layout_marginTop="30sp"
         android:id="@+id/start_btn"
         android:layout_gravity="center"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:background="@drawable/start_btn"
         ></ImageButton>
 </LinearLayout>

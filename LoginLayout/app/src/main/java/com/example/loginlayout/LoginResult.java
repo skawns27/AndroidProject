@@ -27,10 +27,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.TimerTask;
 
 public class LoginResult extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,activityCollection, FragmentCallBack {
+        implements NavigationView.OnNavigationItemSelectedListener,activityCollection, FragmentCallBack, userMain.start_study {
 
-    TextView login_result;
-    ImageButton start_btn;
     searchData_Fragment record;
     OP_optFragment option;
     userMain user;
@@ -44,13 +42,16 @@ public class LoginResult extends AppCompatActivity
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        user=new userMain();
         record=new searchData_Fragment();
         option=new OP_optFragment();
-        start_btn=findViewById(R.id.start_btn);
 
         DrawerLayout drawer=findViewById(R.id.drawer);
+
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         NavigationView navigationView=findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
@@ -59,14 +60,8 @@ public class LoginResult extends AppCompatActivity
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
 
+        fragmentManager.beginTransaction().add(R.id.container,user).commit();
 
-       start_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                start_study();
-            }
-        });
-       fragmentManager.beginTransaction().add(R.id.container,user).commit();
     }
 
     @Override
@@ -75,18 +70,18 @@ public class LoginResult extends AppCompatActivity
         setResult(REQUEST_LOGOUT);
         finish();
     }
-    protected void start_study(){
+    public void onStart_study(){
         Toast.makeText(this,"학습시작",Toast.LENGTH_LONG).show();
         Intent mIntent=new Intent(getApplicationContext(),study_activity.class);
         mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|
-                        Intent.FLAG_ACTIVITY_SINGLE_TOP|
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent.FLAG_ACTIVITY_SINGLE_TOP|
+                Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivityForResult(mIntent,REQUEST_STUDY);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);//메뉴추가
+        getMenuInflater().inflate(R.menu.menu_bar,menu);//메뉴추가
         return true;
     }
 
