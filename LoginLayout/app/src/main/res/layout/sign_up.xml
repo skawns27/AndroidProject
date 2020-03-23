@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="32dp"
-                android:hint="이메일 주소*"
+                android:hint="ID*"
                 ></com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
         <Button

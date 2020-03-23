@@ -15,11 +15,12 @@ import java.util.zip.DataFormatException;
 
 
 public class study_activity extends AppCompatActivity implements activityCollection{
-    TextView date,sec_tv,min_tv,hour_tv,today_record;
+    TextView date,sec_tv,min_tv,hour_tv,m_sec_tv,today_record;
     Button sound_control,logout;
     long study_sec=0;
     long study_min=0;
     long study_hour=0;
+    long study_m_sec=0;
     String today;
 
 

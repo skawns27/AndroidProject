@@ -44,9 +44,9 @@
     </TextView>
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1.7"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="시간"
+            android:text=":"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             >
@@ -62,9 +62,9 @@
             ></TextView>
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="분"
+            android:text=":"
             android:layout_height="wrap_content"
             android:textStyle="italic"
             android:textSize="30sp"
@@ -81,13 +81,22 @@
             ></TextView>
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1.3"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="초"
+            android:text=":"
             android:layout_height="wrap_content"
             android:textStyle="italic"
             android:textSize="30sp"
             ></TextView>
+
+        <TextView
+            android:id="@+id/st_m_sec"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textStyle="italic"></TextView>
     </LinearLayout>
     <androidx.core.widget.ContentLoadingProgressBar
         android:layout_width="match_parent"
