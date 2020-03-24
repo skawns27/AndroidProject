@@ -8,17 +8,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Response;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SignUpActivity extends AppCompatActivity {
     CheckBox male,female;
     TextView log;
-    TextInputEditText TextView_email,TextView_password,TextView_password_check;
-    Button email_confirm,send_in;
-    String input_email="";
+    TextInputEditText TextView_id,TextView_password,TextView_password_check;
+    Button id_confirm,send_in;
+    String input_id="";
     String input_password="",input_check="";
     boolean confirm;//가입신청 버튼
     //1.회원가입 신청 중복 확인 sql->DB연동 조회 확인
@@ -29,10 +34,12 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        TextView_email=findViewById(R.id.TextView_email);
+        confirm=false;
+
+        TextView_id=findViewById(R.id.TextView_email);
         TextView_password=findViewById(R.id.TextView_password);
         TextView_password_check=findViewById(R.id.password_check);
-        email_confirm=findViewById(R.id.check_email);
+        id_confirm=findViewById(R.id.check_email);
         male=findViewById(R.id.man);
         female=findViewById(R.id.woman);
         log=findViewById(R.id.sign_up_log);
@@ -50,8 +57,27 @@ public class SignUpActivity extends AppCompatActivity {
                 male.setChecked(false);
             }
         });
-        send_in.setEnabled(false);
-        confirm=false;
+        send_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Response.Listener<String> responseListener=new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if(confirm){
+                                Toast.makeText(getApplicationContext(),"계정생성 완료",Toast.LENGTH_LONG);
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),"입력하신 ID 또는 PW는 사용하실 수 없습니다",Toast.LENGTH_LONG);
+                            }
+                        }catch(JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                },Response.Listener<String>
+            }
+        });
         observer();
         //email 입력변화 확인
 
