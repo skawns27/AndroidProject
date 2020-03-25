@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
@@ -75,8 +76,14 @@ public class SignUpActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                },Response.Listener<String>
-            }
+                    };
+                Response.Listener<String> ErrorListener=new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),"계정생성 실패",Toast.LENGTH_LONG);
+                    }
+                }
+                }
         });
         observer();
         //email 입력변화 확인
