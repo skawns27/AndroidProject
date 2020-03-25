@@ -1,6 +1,5 @@
 package com.example.loginlayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,10 +21,12 @@ import org.json.JSONObject;
 public class SignUpActivity extends AppCompatActivity {
     CheckBox male,female;
     TextView log;
-    TextInputEditText TextView_id,TextView_password,TextView_password_check;
+    TextInputEditText TextView_id,TextView_password,TextView_password_check,TextView_name;
     Button id_confirm,send_in;
+    String input_name="";
     String input_id="";
     String input_password="",input_check="";
+    String sex="";
     boolean confirm;//가입신청 버튼
     //1.회원가입 신청 중복 확인 sql->DB연동 조회 확인
     //2.중복 확인 후 메인화면으로 돌아오고 가입완료 이벤트 창 띄우기->DB정보 추가
@@ -38,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         confirm=false;
 
         TextView_id=findViewById(R.id.TextView_email);
+        TextView_name=findViewById(R.id.TextView_name);
         TextView_password=findViewById(R.id.TextView_password);
         TextView_password_check=findViewById(R.id.password_check);
         id_confirm=findViewById(R.id.check_email);
@@ -50,12 +52,14 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 female.setChecked(false);
+                sex="male";
             }
         });
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 male.setChecked(false);
+                sex="female";
             }
         });
         send_in.setOnClickListener(new View.OnClickListener() {
@@ -77,12 +81,14 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     }
                     };
-                Response.Listener<String> ErrorListener=new Response.ErrorListener(){
+                Response.ErrorListener errorListener=new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(),"계정생성 실패",Toast.LENGTH_LONG);
                     }
-                }
+                };
+
+                SignUpRequest signupRequest=new SignUpRequest(input_name,input_id,input_password,sex,responseListener,errorListener);
                 }
         });
         observer();
@@ -105,7 +111,7 @@ public class SignUpActivity extends AppCompatActivity {
     // private void checkEmail(String input_email)
 
     private void observer(){
-        TextView_email.addTextChangedListener(new TextWatcher() {
+        TextView_id.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -114,9 +120,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s!=null)
-                    input_email=s.toString();//중복 이메일 확인 메서드 추가
+                    input_id=s.toString();//중복 이메일 확인 메서드 추가
                 else
-                    input_email=null;
+                    input_id=null;
             }
 
             @Override
@@ -159,6 +165,27 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 else input_check=null;
             }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        TextView_name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s!=null) {
+                    input_name = s.toString();
+                }
+                else Toast.makeText(getApplicationContext(),"이름을 입력해 주세요",Toast.LENGTH_SHORT);
+            }
+
 
             @Override
             public void afterTextChanged(Editable s) {

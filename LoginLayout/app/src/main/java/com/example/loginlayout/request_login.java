@@ -8,15 +8,14 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpRequest extends StringRequest {
+public class request_login extends StringRequest {
     HashMap<String,String> map;
     final static String URL="";
-    SignUpRequest(String name, String id, String pw, String sex, Response .Listener<String> listener, Response.ErrorListener errorListener){
-        super(Method.POST,URL,listener,errorListener);
-        map.put("userName",name);
-        map.put("userId",id);
-        map.put("userPw",pw);
-        map.put("userSex",sex);
+
+    request_login( String userID, String userPassword, Response.Listener<String> listener, Response.ErrorListener errorListener){
+        super(Method.POST,URL,listener, errorListener);
+        map.put("userID",userID);
+        map.put("userPassword",userPassword);
     }
 
     @Override

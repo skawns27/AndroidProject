@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout relativeLayout_login;
     String email1="skawns27";
     String password1="1234";
+
+    boolean login_state;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout_login = findViewById(R.id.login_button);
         login_log =findViewById(R.id.login_log);
         sign_up=findViewById(R.id.sign_up);
+        login_state=false;
 
 
         //이메일 옵저버
@@ -87,28 +91,28 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void pass_login() {
-        //입력값과 지정값이 같다면
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {   //회원가입
                 Intent intent=new Intent(MainActivity.this,SignUpActivity.class);
                 startActivity(intent);
             }
         });
         relativeLayout_login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {//클릭 이벤트 발생
+            public void onClick(View v) {//로그인
                 if (input_email.equals(email1) && input_password.equals(password1)) {
-                    Intent intent = new Intent(getApplicationContext(), LoginResult.class);//배송위치
+                    Intent intent = new Intent(getApplicationContext(), LoginResult.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK|
                                     intent.FLAG_ACTIVITY_SINGLE_TOP|
                                     intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("email", input_email);//인텐트 엑스트라에 입력
                     intent.putExtra("password", input_password);
                     startActivity(intent);//인텐트 전달
+                    login_state=false;
                 }//입력정보 분기점
                 else {
-                    if (TextView_email.getText().toString().equals("")||TextView_password.getText().toString().equals("")) {
+                    if (login_state) {
                         login_log.setText("이메일과 비밀번호를 입력해주세요");//이메일 공백 이벤트
                     } else {//등록되지 않은 계정
                         login_log.setText("등록되지 않은 계정입니다. 이메일이나 비밀번호를 확인해 주세요.");
