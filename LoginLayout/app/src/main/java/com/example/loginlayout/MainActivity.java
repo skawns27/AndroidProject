@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     String email1="skawns27";
     String password1="1234";
 
-    boolean login_state;
+    static private boolean login_state;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -101,15 +101,15 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//로그인
-                if (input_email.equals(email1) && input_password.equals(password1)) {
+                if (login_state) {
                     Intent intent = new Intent(getApplicationContext(), LoginResult.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK|
                                     intent.FLAG_ACTIVITY_SINGLE_TOP|
                                     intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("email", input_email);//인텐트 엑스트라에 입력
                     intent.putExtra("password", input_password);
+                    login_state=false;//로그인 승인 해체
                     startActivity(intent);//인텐트 전달
-                    login_state=false;
                 }//입력정보 분기점
                 else {
                     if (login_state) {
