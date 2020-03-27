@@ -9,9 +9,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_LOGIN=100;
@@ -19,14 +27,20 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_FOUNDPW=102;
     String input_email="";
     String input_password="";
+
     TextView login_log;
     TextView sign_up;
+
     TextInputEditText TextView_email,TextView_password;
     RelativeLayout relativeLayout_login;
+
     String email1="skawns27";
     String password1="1234";
 
-    static private boolean login_state;
+    static boolean login_state;
+
+    request_login R_login;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -91,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void pass_login() {
+
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {   //회원가입
@@ -98,9 +113,34 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         relativeLayout_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//로그인
+                boolean success;
+
+                if (input_email==null||input_password==null) {
+                    login_log.setText("이메일과 비밀번호를 입력해주세요");//이메일 공백 이벤트
+                }
+
+                Response.Listener<String> respondListener=new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject=new JSONObject();
+                            login_state = jsonObject.getBoolean("success");
+                        } catch(JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+                };
+                Response.ErrorListener errorListener=new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        login_log.setText("등록되지 않은 계정입니다. 이메일이나 비밀번호를 확인해 주세요.");
+                    }
+                };
+                R_login=new request_login(input_email,input_password,respondListener,errorListener);
                 if (login_state) {
                     Intent intent = new Intent(getApplicationContext(), LoginResult.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK|
@@ -108,16 +148,10 @@ public class MainActivity extends AppCompatActivity {
                                     intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("email", input_email);//인텐트 엑스트라에 입력
                     intent.putExtra("password", input_password);
-                    login_state=false;//로그인 승인 해체
+                    login_state=false;//로그인 승인 초기화
                     startActivity(intent);//인텐트 전달
                 }//입력정보 분기점
-                else {
-                    if (login_state) {
-                        login_log.setText("이메일과 비밀번호를 입력해주세요");//이메일 공백 이벤트
-                    } else {//등록되지 않은 계정
-                        login_log.setText("등록되지 않은 계정입니다. 이메일이나 비밀번호를 확인해 주세요.");
-                    }
-                }
+
 
                 //로그인 불가 이벤트 추가 완료
             }

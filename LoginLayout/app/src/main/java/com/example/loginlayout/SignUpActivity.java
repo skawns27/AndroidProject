@@ -28,6 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
     String input_password="",input_check="";
     String sex="";
     boolean confirm;//가입신청 버튼
+    SignUpRequest signupRequest;
     //1.회원가입 신청 중복 확인 sql->DB연동 조회 확인
     //2.중복 확인 후 메인화면으로 돌아오고 가입완료 이벤트 창 띄우기->DB정보 추가
     //3.
@@ -88,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 };
 
-                SignUpRequest signupRequest=new SignUpRequest(input_name,input_id,input_password,sex,responseListener,errorListener);
+                signupRequest=new SignUpRequest(input_name,input_id,input_password,sex,responseListener,errorListener);
                 }
         });
         observer();
