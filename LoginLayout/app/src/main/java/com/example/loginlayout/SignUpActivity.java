@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +24,10 @@ public class SignUpActivity extends AppCompatActivity {
     TextView log;
     TextInputEditText TextView_id,TextView_password,TextView_password_check,TextView_name;
     Button id_confirm,send_in;
-    String input_name="";
-    String input_id="";
-    String input_password="",input_check="";
-    String sex="";
+    String input_name=null;
+    String input_id=null;
+    String input_password=null,input_check=null;
+    String sex=null;
     boolean confirm;//가입신청 버튼
     SignUpRequest signupRequest;
     //1.회원가입 신청 중복 확인 sql->DB연동 조회 확인
@@ -49,6 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
         log=findViewById(R.id.sign_up_log);
         send_in=findViewById(R.id.send_in);
 
+        TextView_name.setPrivateImeOptions("defaultInputmode=korean");
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,43 +65,52 @@ public class SignUpActivity extends AppCompatActivity {
                 sex="female";
             }
         });
+
+
+        observer();
+
         send_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Response.Listener<String> responseListener=new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            if(confirm){
-                                Toast.makeText(getApplicationContext(),"계정생성 완료",Toast.LENGTH_LONG);
-                            }
-                            else{
-                                Toast.makeText(getApplicationContext(),"입력하신 ID 또는 PW는 사용하실 수 없습니다",Toast.LENGTH_LONG);
-                            }
-                        }catch(JSONException e){
-                            e.printStackTrace();
-                        }
-                    }
-                    };
-                Response.ErrorListener errorListener=new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),"계정생성 실패",Toast.LENGTH_LONG);
-                    }
-                };
-
-                signupRequest=new SignUpRequest(input_name,input_id,input_password,sex,responseListener,errorListener);
+                if (input_id == null || input_password == null || input_name == null || sex == null) {
+                    log.setText("정보란을 모두 입력해 주세요");
                 }
-        });
-        observer();
-        //email 입력변화 확인
 
+                else {
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                confirm=jsonObject.getBoolean("success");
+                                if (confirm) {
+                                    Toast.makeText(getApplicationContext(), "계정생성 완료", Toast.LENGTH_LONG);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "계정생성에 실패하였습니다.", Toast.LENGTH_LONG);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    Response.ErrorListener errorListener = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "계정생성 실패", Toast.LENGTH_LONG);
+                        }
+                    };
+
+                    signupRequest = new SignUpRequest(input_name, input_id, input_password, sex, responseListener, errorListener);
+                }
+            }
+        });
+        //email 입력변화 확인
     }
 
 
     private void checkPassword(String input_password,String input_check){
         if(input_password.equals(input_check)){
+            log.setTextColor(R.color.colorBlue);
             log.setText("비밀번호가 일치합니다.");
         }
         else if(input_check==null||input_password==null){
@@ -112,6 +123,23 @@ public class SignUpActivity extends AppCompatActivity {
     // private void checkEmail(String input_email)
 
     private void observer(){
+        TextView_name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s!=null)
+                    input_name=s.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         TextView_id.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

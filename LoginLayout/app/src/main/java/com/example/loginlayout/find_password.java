@@ -31,7 +31,9 @@ public class find_password extends AppCompatActivity {
         textObv();
 
     }
-    private void pw_change(){
+    private void pw_change(){ //비밀번호 변경
+
+
 
     }
     private void textObv(){

@@ -22,11 +22,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
-    public static final int REQUEST_LOGIN=100;
-    public static final int REQUEST_SIGNUP=101;
-    public static final int REQUEST_FOUNDPW=102;
-    String input_email="";
-    String input_password="";
+
+    String input_email=null;
+    String input_password=null;
 
     TextView login_log;
     TextView sign_up;
@@ -120,41 +118,41 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {//로그인
                 boolean success;
 
-                if (input_email==null||input_password==null) {
+                if (input_email == null || input_password == null) {
                     login_log.setText("이메일과 비밀번호를 입력해주세요");//이메일 공백 이벤트
                 }
+                else {
+                    Response.Listener<String> respondListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject();
+                                login_state = jsonObject.getBoolean("success");
 
-                Response.Listener<String> respondListener=new Response.Listener<String>(){
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject=new JSONObject();
-                            login_state = jsonObject.getBoolean("success");
-                        } catch(JSONException e){
-                        e.printStackTrace();
-                    }
+                                if (login_state) {
+                                    Intent intent = new Intent(getApplicationContext(), LoginResult.class);
+                                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK |
+                                            intent.FLAG_ACTIVITY_SINGLE_TOP |
+                                            intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("email", input_email);//인텐트 엑스트라에 입력
+                                    intent.putExtra("password", input_password);
+                                    login_state = false;//로그인 승인 초기화
+                                    startActivity(intent);//인텐트 전달
+                                }//입력정보 분기점
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    Response.ErrorListener errorListener = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            login_log.setText("등록되지 않은 계정입니다. 이메일이나 비밀번호를 확인해 주세요.");
+                        }
+                    };
+                    R_login = new request_login(input_email, input_password, respondListener, errorListener);
+                    //로그인 불가 이벤트 추가 완료
                 }
-                };
-                Response.ErrorListener errorListener=new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        login_log.setText("등록되지 않은 계정입니다. 이메일이나 비밀번호를 확인해 주세요.");
-                    }
-                };
-                R_login=new request_login(input_email,input_password,respondListener,errorListener);
-                if (login_state) {
-                    Intent intent = new Intent(getApplicationContext(), LoginResult.class);
-                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK|
-                                    intent.FLAG_ACTIVITY_SINGLE_TOP|
-                                    intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("email", input_email);//인텐트 엑스트라에 입력
-                    intent.putExtra("password", input_password);
-                    login_state=false;//로그인 승인 초기화
-                    startActivity(intent);//인텐트 전달
-                }//입력정보 분기점
-
-
-                //로그인 불가 이벤트 추가 완료
             }
         });
     }

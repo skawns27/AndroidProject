@@ -66,6 +66,7 @@
         android:layout_height="wrap_content">
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TextView_password"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -79,6 +80,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_check"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -87,12 +89,6 @@
             android:layout_marginRight="25dp"
             ></com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/sign_up_log"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textColor="#ff0000"></TextView>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,6 +110,15 @@
             android:text="여자"
             ></androidx.appcompat.widget.AppCompatCheckBox>
     </RelativeLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/sign_up_log"
+        android:gravity="center"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textColor="#ff0000"></TextView>
     <Button
         android:id="@+id/send_in"
         android:layout_width="90dp"

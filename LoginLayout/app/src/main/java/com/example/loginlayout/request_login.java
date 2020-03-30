@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class request_login extends StringRequest {
     HashMap<String,String> map;
-    final static String URL="";
+    final static String URL="http://skawns27.dathome.co.kr/Login.php";
 
     request_login( String userID, String userPassword, Response.Listener<String> listener, Response.ErrorListener errorListener){
         super(Method.POST,URL,listener, errorListener);
