@@ -13,7 +13,7 @@
         android:layout_margin="25dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/android_logo"
+        android:src="@drawable/load_map"
         android:background="@null"
         android:layout_gravity="center"
         android:layout_marginBottom="1dp"

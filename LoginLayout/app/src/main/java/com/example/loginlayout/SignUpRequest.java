@@ -1,5 +1,7 @@
 package com.example.loginlayout;
 
+import android.util.Log;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -13,6 +15,8 @@ public class SignUpRequest extends StringRequest {
     final static String URL="http://skawns27.dothome.co.kr/Register.php";
     SignUpRequest(String name, String id, String pw, String sex, Response .Listener<String> listener, Response.ErrorListener errorListener){
         super(Method.POST,URL,listener,errorListener);
+        map=new HashMap<>();
+        Log.d("hash", "id:" + id + ",name" + name + "pw:" + pw + "sex:" + sex);
         map.put("userName",name);
         map.put("userID",id);
         map.put("userPassword",pw);

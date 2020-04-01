@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
@@ -32,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
     TextInputEditText TextView_email,TextView_password;
     RelativeLayout relativeLayout_login;
 
-    String email1="skawns27";
-    String password1="1234";
 
     static boolean login_state;
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(String response) {
                             try {
-                                JSONObject jsonObject = new JSONObject();
+                                JSONObject jsonObject = new JSONObject(response);
                                 login_state = jsonObject.getBoolean("success");
 
                                 if (login_state) {
@@ -151,6 +151,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     };
                     R_login = new request_login(input_email, input_password, respondListener, errorListener);
+                    RequestQueue queue= Volley.newRequestQueue(MainActivity.this);
+                    queue.add(R_login);
                     //로그인 불가 이벤트 추가 완료
                 }
             }
