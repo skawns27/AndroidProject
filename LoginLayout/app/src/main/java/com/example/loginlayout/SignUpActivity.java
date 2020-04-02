@@ -181,6 +181,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 confirm = jsonObject.getBoolean("success");
                                 if (confirm) {
                                     Toast.makeText(getApplicationContext(), "계정생성 완료", Toast.LENGTH_LONG);
+                                    finish();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "계정생성에 실패하였습니다.", Toast.LENGTH_LONG);
                                 }
