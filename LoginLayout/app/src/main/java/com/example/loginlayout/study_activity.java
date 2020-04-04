@@ -21,26 +21,31 @@ public class study_activity extends AppCompatActivity implements activityCollect
     long study_min=0;
     long study_hour=0;
     long study_m_sec=0;
+
+    long G_min;
+    long G_hour;
+    long G_sec;
     String today;
+    String progress;
 
 
     TimerTask timerTask= new TimerTask() {
         @Override
         public void run() {
-                study_sec++;
-            if (study_sec == 60) {
-                study_sec = 0;
-                study_min++;
-                min_tv.setText(Long.toString(study_min));
-                if (study_min == 60) {
-                    study_min = 0;
-                    study_hour++;
-                    if (study_hour == 24) {
-                        study_hour = 0;
+                study_m_sec++;
+                if(study_m_sec==10){
+                    study_m_sec=0;
+                    study_sec++;
+                    if (study_sec%60==0) {
+                        study_min++;
+                        min_tv.setText(Long.toString(study_min%60));
+                        if (study_min%60==0) {
+                            study_hour++;
+                        }
                     }
                 }
-            }
-            sec_tv.setText(Long.toString(study_sec));
+            m_sec_tv.setText(Long.toString(study_m_sec%100));
+            sec_tv.setText(Long.toString(study_sec%60));
             min_tv.setText(Long.toString(study_min));
             hour_tv.setText(Long.toString(study_hour));
         }
@@ -55,7 +60,7 @@ public class study_activity extends AppCompatActivity implements activityCollect
         min_tv=findViewById(R.id.st_min);
         sec_tv=findViewById(R.id.st_sec);
         date=findViewById(R.id.date);
-
+        m_sec_tv=findViewById(R.id.st_m_sec);
         DateFormat myData= DateFormat.getDateInstance();
         today=myData.toString();
         date.setText(today);
@@ -67,7 +72,7 @@ public class study_activity extends AppCompatActivity implements activityCollect
                 }
             });
         Timer timer=new Timer();
-        timer.schedule(timerTask,0,1000);
+        timer.schedule(timerTask,0,100);
         }
 
     @Override
