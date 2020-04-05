@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/search"
+
         android:title="기록조회"
         android:enabled="true"
         android:icon="@drawable/search">
