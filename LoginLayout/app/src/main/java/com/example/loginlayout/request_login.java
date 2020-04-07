@@ -15,7 +15,7 @@ public class request_login extends StringRequest {
     final static String URL="http://skawns27.dothome.co.kr/Login.php";
 
     request_login( String userID, String userPassword, Response.Listener<String> listener, Response.ErrorListener errorListener){
-        super(Method.POST,URL,listener, errorListener);
+        super(Method.POST,URL,listener, errorListener);//통신프로토콜,URL,리스너,오류리스너)
         map=new HashMap<>();
         map.put("userID",userID);
         map.put("userPassword",userPassword);

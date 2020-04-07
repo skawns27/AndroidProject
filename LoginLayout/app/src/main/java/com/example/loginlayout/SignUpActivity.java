@@ -41,7 +41,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        confirm = false;
 
         TextView_id = findViewById(R.id.TextView_email);
         TextView_name = findViewById(R.id.TextView_name);
@@ -178,7 +177,7 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onResponse(String response) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
-                                confirm = jsonObject.getBoolean("success");
+                                boolean confirm = jsonObject.getBoolean("success");
                                 if (confirm) {
                                     Toast.makeText(getApplicationContext(), "계정생성 완료", Toast.LENGTH_LONG);
                                     finish();
