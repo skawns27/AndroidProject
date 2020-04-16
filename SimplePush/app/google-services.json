@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "578738383118",
+    "firebase_url": "https://simplepush-c2aaa.firebaseio.com",
+    "project_id": "simplepush-c2aaa",
+    "storage_bucket": "simplepush-c2aaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578738383118:android:c3186bb1fed9175c160f5f",
+        "android_client_info": {
+          "package_name": "com.pushtest.org"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578738383118-8hq6oid6vtoqtk55uf37mujkqqbum92e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyK-VLWFGnMOKfRqM1lplb8BdEV4hN28g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578738383118-8hq6oid6vtoqtk55uf37mujkqqbum92e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
