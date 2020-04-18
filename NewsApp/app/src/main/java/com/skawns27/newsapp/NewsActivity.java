@@ -53,7 +53,7 @@ public class NewsActivity extends AppCompatActivity {
         // 1. Set url and make new StringRequest
         // 2. Call onResponse method to
             //Take information used to Queue from URL
-        String url ="https://newsapi.org/v2/top-headlines?country=kr&apiKey=ee6c0bd73346436784990603893d00d0";//통신할 url
+        String url ="";//통신할 url
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
