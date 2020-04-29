@@ -1,0 +1,2 @@
+rootProject.name='PushPull_Server'
+include ':app'

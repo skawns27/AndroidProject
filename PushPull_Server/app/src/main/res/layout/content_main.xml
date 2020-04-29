@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is PushPull Server"
+        android:textSize="30sp"></TextView>
+   <ScrollView
+       android:layout_marginTop="100dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <EditText
+           android:id="@+id/send_msg"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="push 내용"></EditText>
+   </ScrollView>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Push Category"
+        android:textSize="20sp"></TextView>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/game"
+            android:layout_marginLeft="15dp"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="게임"
+            ></androidx.appcompat.widget.AppCompatCheckBox>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/movie"
+            android:layout_marginLeft="30dp"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="영화"
+            ></androidx.appcompat.widget.AppCompatCheckBox>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/shopping"
+            android:layout_marginLeft="30dp"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="쇼핑"
+            ></androidx.appcompat.widget.AppCompatCheckBox>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_marginLeft="30dp"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:text="스포츠"
+            ></androidx.appcompat.widget.AppCompatCheckBox>
+    </LinearLayout>
+    <Button
+        android:id="@+id/send_button"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="전송하기"></Button>
+
+
+</LinearLayout>
