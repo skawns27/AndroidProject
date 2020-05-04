@@ -41,6 +41,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/pj_date"
+                        android:text="생성날짜"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></TextView>
                 <TextView
                     android:id="@+id/pj_content"
                     android:layout_width="match_parent"

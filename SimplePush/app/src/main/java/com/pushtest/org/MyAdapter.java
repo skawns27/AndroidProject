@@ -23,6 +23,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         public TextView pj_title;
         public TextView pj_content;
         public TextView pj_num;
+        public TextView pj_date;
         public View rootView;
         public MyViewHolder(View v) {
             super(v);
@@ -30,6 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             pj_title=v.findViewById(R.id.pj_title);
             pj_content=v.findViewById(R.id.pj_content);
             pj_num=v.findViewById(R.id.pj_state);
+            pj_date=v.findViewById(R.id.pj_date);
             v.setEnabled(true);
             v.setClickable(true);
             v.setOnClickListener(onClickListener);
