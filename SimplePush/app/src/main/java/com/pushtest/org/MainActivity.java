@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                   Object obj=v.getTag();
                   if(obj!=null){
                       Intent intent=new Intent(this, pj_body.class);
-                      intent.putExtra()
+                      startActivity(intent);
+
                   }
             }
         });
