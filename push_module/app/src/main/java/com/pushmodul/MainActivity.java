@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //토큰 호출 +
         FirebaseMessaging.getInstance().subscribeToTopic("news");
         FirebaseInstanceId.getInstance().getToken();
 
-        myWebView=(WebView)findViewById(R.id.webcontent);
     }
 }
