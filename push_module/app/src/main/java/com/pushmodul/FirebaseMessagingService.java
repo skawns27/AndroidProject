@@ -1,10 +1,10 @@
 package com.pushmodul;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 
@@ -19,21 +19,23 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         sendNotification(remoteMessage.getData().get("message"));
     }
 
+    /*알림 띄우기*/
     private void sendNotification(String messageBody){
         Intent intent=new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivities(this,0,intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         //알림을 띄우는 설정
-        Uri.defaultSoundUri=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder=new NotificationCompat.Builder(this)
+        Uri defaultSoundUri=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        Notification.Builder notificationBuilder=new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("FCM Push Test")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
-                .setConentIntent(pendingIntent);
+                .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager=
                 (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);

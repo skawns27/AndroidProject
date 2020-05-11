@@ -15,7 +15,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            //service 는 UI가 없는 백그라운드 기능을 담당하게 한다.
         </activity>
         <service android:name=".FirebaseMessagingService">
             <intent-filter>
