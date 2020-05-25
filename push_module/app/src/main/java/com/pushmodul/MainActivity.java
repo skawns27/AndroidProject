@@ -17,6 +17,13 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.io.IOException;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
 public class MainActivity extends AppCompatActivity {
     TextView token;
     @Override
@@ -29,12 +36,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(InstanceIdResult instanceIdResult) {
                         String newToken =instanceIdResult.getToken();
+                        Log.d("token", newToken);
                     }
                 });
-
-        //토큰 호출 +
-        FirebaseMessaging.getInstance().subscribeToTopic("news");
     }
-
-
 }
