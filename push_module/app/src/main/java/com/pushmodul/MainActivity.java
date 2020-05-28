@@ -23,6 +23,7 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     TextView token;
@@ -31,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         token=findViewById(R.id.token);
         setContentView(R.layout.activity_main);
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sendRegistrationToServer();
+            }
+        });
+        thread.start();
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this,
                 new OnSuccessListener<InstanceIdResult>() {
                     @Override
@@ -39,5 +47,26 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("token", newToken);
                     }
                 });
+
+
+    }
+    protected void sendRegistrationToServer() {
+        String Token="TestToken";
+        OkHttpClient client = new OkHttpClient();
+        Log.d("서버전송-", "전송토큰: " + Token);
+        RequestBody body = new FormBody.Builder()
+                .add("Token", Token)
+                .build();
+        /*서버 url 입력하기*/
+        Request request = new Request.Builder()
+                .url("http://skawns27.dothome.co.kr/register.php")
+                .post(body)
+                .build();
+
+        try {
+            Response response=client.newCall(request).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
