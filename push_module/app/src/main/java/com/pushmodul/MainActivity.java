@@ -1,72 +1,85 @@
 package com.pushmodul;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.SwitchCompat;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.webkit.WebView;
-import android.widget.TextView;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
 
-import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import okhttp3.FormBody;
+import java.util.Map;
+
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    TextView token;
+    static RequestQueue requestQueue;
+    static String Token;
+    static int state=1;
+    static int id;
+    SwitchCompat sw;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        token=findViewById(R.id.token);
         setContentView(R.layout.activity_main);
-        Thread thread=new Thread(new Runnable() {
+        sw=findViewById(R.id.sw);
+        requestQueue = Volley.newRequestQueue(this);
+
+
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void run() {
-                sendRegistrationToServer();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Response.Listener<String> on_off =new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject =new JSONObject(response);
+                            boolean success=jsonObject.getBoolean("success");
+                            Log.d("s",success+"12");
+                            if(success) {
+                                Toast.makeText(getApplicationContext(), "수신상태가 갱신 되었습니다.", Toast.LENGTH_LONG);
+                            }
+                            else Toast.makeText(getApplicationContext(), "갱신 실패.", Toast.LENGTH_LONG);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                if(isChecked){
+                    state=1;
+                    Request open_close=new request_check(Integer.toString(state),Token,on_off);
+                    requestQueue.add(open_close);
+                    Toast.makeText(getApplicationContext(),"수신 활성화 상태입니다.",Toast.LENGTH_LONG).show();
+                            Log.d("사용자 상태:", "수신상태");
+                    }
+                else {
+                    state=3;
+                    Request open_close=new request_check(Integer.toString(state),Token,on_off);
+                    requestQueue.add(open_close);
+                    Toast.makeText(getApplicationContext(),"수신 거부 상태입니다.",Toast.LENGTH_LONG).show();
+                    Log.d("사용자 상태:", "수신거부 상태");
+                }
             }
         });
-        thread.start();
+
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this,
                 new OnSuccessListener<InstanceIdResult>() {
                     @Override
                     public void onSuccess(InstanceIdResult instanceIdResult) {
-                        String newToken =instanceIdResult.getToken();
-                        Log.d("token", newToken);
+                        Token =instanceIdResult.getToken();
+                        Log.d("token", Token);
                     }
                 });
 
-
-    }
-    protected void sendRegistrationToServer() {
-        String Token="TestToken";
-        OkHttpClient client = new OkHttpClient();
-        Log.d("서버전송-", "전송토큰: " + Token);
-        RequestBody body = new FormBody.Builder()
-                .add("Token", Token)
-                .build();
-        /*서버 url 입력하기*/
-        Request request = new Request.Builder()
-                .url("http://skawns27.dothome.co.kr/register.php")
-                .post(body)
-                .build();
-
-        try {
-            Response response=client.newCall(request).execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
